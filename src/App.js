@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Components/Header/Header'
 import AllArticles from './Components/AllArticles/AllArticlesPage'
+import SingleArticle from './Components/SingleArticle/SingleArticlePage'
 
 class App extends Component {
   state = { UserLoggedIn: null }
@@ -8,7 +9,8 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <AllArticles />
+        {/* <AllArticles /> */}
+        <SingleArticle />
       </div>
     )
   }
