@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import DisplayArticles from './DisplayArticles'
+import { getAllArticles } from '../../api'
 
 class AllArticles extends Component {
     state = { articles: [] }
 
     componentDidMount() {
-        const url = 'https://ahp-nc-news.herokuapp.com/api/articles';
-        axios.get(url).then(({ data: { articles } }) => {
+        getAllArticles().then((articles) => {
             this.setState({ articles });
         });
     }

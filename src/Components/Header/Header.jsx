@@ -26,6 +26,8 @@ const Header = () => {
             </Navbar>
         </Container>
     )
+
+    //check user exists => make request => user/username => 
 }
 
 export default Header
