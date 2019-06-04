@@ -16,6 +16,7 @@ class SingleArticle extends Component {
     render() {
         return (<div>
             <DisplaySingleArticle article={this.state.singleArticle} />
+
         </div>)
     }
 }
