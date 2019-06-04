@@ -3,11 +3,9 @@ import DisplaySingleArticle from './DisplaySingleArticle'
 import { getSingleArticle } from '../../api'
 
 class SingleArticle extends Component {
-
     state = { singleArticle: {} }
-
     componentDidMount() {
-        getSingleArticle().then((article) => {
+        getSingleArticle(this.props.article_id).then((article) => {
             this.setState({ singleArticle: article });
         })
     }

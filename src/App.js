@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-// import { Router, Link } from '@reach/router'
+import { Router } from '@reach/router'
 import Header from './Components/Header/Header'
 import AllArticles from './Components/AllArticles/AllArticlesPage'
 import SingleArticle from './Components/SingleArticle/SingleArticlePage'
 
 class App extends Component {
-  state = { UserLoggedIn: null }
+  state = { userLoggedIn: null }
   render() {
     return (
-      // <Router>
       <div>
-        <Header path='/*' />
-        {/* <AllArticles path='/api/articles' /> */}
-        <SingleArticle loginUser={this.loginUser} />
+        <Header loginUser={this.loginUser} />
+        <Router>
+          <AllArticles path='/home' />
+          <AllArticles path='/articles' />
+          <SingleArticle path='/articles/:article_id' />
+        </Router>
       </div>
-      // </Router>
     )
   }
 
@@ -22,7 +23,7 @@ class App extends Component {
     this.setState(
       prevState => {
         return {
-          UserLoggedIn: prevState.UserLoggedIn = true
+          userLoggedIn: prevState.userLoggedIn = event.username
         }
       }
     )
