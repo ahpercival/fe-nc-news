@@ -32,3 +32,9 @@ export const getUserbyUsername = (username) => {
         return user
     })
 }
+
+export const getCommentsByArticleID = article_id => {
+    return axios.get(baseURL + `articles/${article_id}/comments`).then(({ data: { comments } }) => {
+        return comments
+    });
+}

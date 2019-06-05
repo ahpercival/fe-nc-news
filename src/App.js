@@ -5,6 +5,7 @@ import AllArticles from './Components/AllArticles/AllArticlesPage'
 import SingleArticle from './Components/SingleArticle/SingleArticlePage'
 import AllUsersPage from './Components/AllUsers/AllUsersPage'
 import SingleUserPage from './Components/SingleUser/SingleUserPage'
+// import Comments from './Components/Comments/Comments'
 
 class App extends Component {
   state = { userLoggedIn: null }
