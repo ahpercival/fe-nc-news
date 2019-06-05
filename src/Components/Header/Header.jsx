@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, NavDropdown, Form, FormControl, Button } from '
 import { getTopics, getUserbyUsername } from '../../api'
 
 class Header extends Component {
-    state = { userInput: '', topics: [] }
+    state = { userInput: '', correctUsername: null, topics: [] }
 
     componentDidMount() {
         getTopics().then((topics) => {
@@ -21,9 +21,9 @@ class Header extends Component {
                         <Nav className="mr-auto">
                             <Nav.Link href="/home">Home</Nav.Link>
                             <NavDropdown title="Topics" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Topics #1</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Topics #2</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Topics #3</NavDropdown.Item>
+                                {this.state.topics.map(topic => {
+                                   return <NavDropdown.Item key={`droMe${topic.slug}`} href={`/articles?topic=${topic.slug}`}>{topic.slug}</NavDropdown.Item>
+                                })}
                             </NavDropdown>
                             <Nav.Link href="/articles">Articles</Nav.Link>
                             <Nav.Link href="/users">Users</Nav.Link>
@@ -41,13 +41,15 @@ class Header extends Component {
     updateUserInput = event => {
         this.setState({ userInput: event.target.value });
     };
-    
+
     submitUsername = event => {
         event.preventDefault()
-        getUserbyUsername(this.state.userInput).then(user=>{
+        getUserbyUsername(this.state.userInput).then(user => {
+            this.setState({ correctUsername: true })
             this.props.loginUser(user)
+        }).catch(error => {
+            error && this.setState({ correctUsername: false })
         })
-        
     }
 
 }

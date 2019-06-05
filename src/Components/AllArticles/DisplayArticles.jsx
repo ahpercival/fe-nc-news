@@ -11,9 +11,8 @@ const DisplayArticles = props => {
                 return <ul key={`dispArt${article.article_id}`} className="list-unstyled">
                     <Media as="li">
                         <Media.Body>
-                            <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
-                            <p> by </p>
-                            <Link to={`/users/${article.author}`}>{`${article.author}`}</Link>
+                            <h5> <Link to={`/articles/${article.article_id}`}>{article.title} </Link>
+                                by <Link to={`/users/${article.author}`}>{`${article.author}`}</Link></h5>
                         </Media.Body>
                         <Button>Like ({article.votes})</Button>
                     </Media>
