@@ -22,16 +22,17 @@ class Header extends Component {
                             <Nav.Link href="/home">Home</Nav.Link>
                             <NavDropdown title="Topics" id="basic-nav-dropdown">
                                 {this.state.topics.map(topic => {
-                                   return <NavDropdown.Item key={`droMe${topic.slug}`} href={`/articles?topic=${topic.slug}`}>{topic.slug}</NavDropdown.Item>
+                                    return <NavDropdown.Item key={`droMe${topic.slug}`} href={`/articles?topic=${topic.slug}`}>{topic.slug}</NavDropdown.Item>
                                 })}
                             </NavDropdown>
                             <Nav.Link href="/articles">Articles</Nav.Link>
                             <Nav.Link href="/users">Users</Nav.Link>
                         </Nav>
-                        <Form onSubmit={this.submitUsername} inline>
+                        {!this.props.userLoggedIn && <Form onSubmit={this.submitUsername} inline>
                             <FormControl onChange={this.updateUserInput} type="text" placeholder="Username" className="mr-sm-2" />
-                            <Button type="submit" variant="outline-success">Login</Button>
-                        </Form>
+                            <Button disabled={!this.state.userInput.length} type="submit" variant="outline-success">Login</Button>
+                        </Form>}
+                        {this.props.userLoggedIn && <Button onClick={this.selectSignOut} inline="true">Sign Out</Button>}
                     </Navbar.Collapse>
                 </Navbar>
             </Container>
@@ -51,7 +52,12 @@ class Header extends Component {
             error && this.setState({ correctUsername: false })
         })
     }
-
+    
+    selectSignOut = event => {
+        event.preventDefault()
+        this.props.logoutUser()
+        this.setState({ userInput: '', correctUsername: true })
+    }
 }
 
 export default Header

@@ -3,7 +3,7 @@ import DisplayArticles from './DisplayArticles'
 import { getAllArticles } from '../../api'
 
 class AllArticles extends Component {
-    state = { articles: [] }
+    state = { articles: [], page: 1 }
 
     componentDidMount() {
         getAllArticles().then((articles) => {
@@ -12,9 +12,15 @@ class AllArticles extends Component {
     }
     render() {
         return (<div>
-            {this.state.articles && (<DisplayArticles articles={this.state.articles} />)}
+            {this.state.articles && (<DisplayArticles userLoggedIn={this.props.userLoggedIn} articles={this.state.articles} />)}
+            <button>Prev Page</button>
+            <button>Next Page</button>
         </div>)
     }
+
+
+    changePage = () => { }
+
 
 }
 

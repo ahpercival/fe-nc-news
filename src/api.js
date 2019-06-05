@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseURL = 'https://ahp-nc-news.herokuapp.com/api/'
 
-
+//GET REQUESTS
 export const getAllArticles = () => {
     return axios.get(baseURL + 'articles').then(({ data: { articles } }) => {
         return articles

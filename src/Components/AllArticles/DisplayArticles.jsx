@@ -3,7 +3,7 @@ import { Container, Button, Media } from 'react-bootstrap';
 import { Link } from '@reach/router'
 
 const DisplayArticles = props => {
-    const { articles, UserLoggedIn } = props
+    const { articles, userLoggedIn } = props
     return (
         <Container>
             <h1>All Articles</h1>
@@ -14,7 +14,7 @@ const DisplayArticles = props => {
                             <h5> <Link to={`/articles/${article.article_id}`}>{article.title} </Link>
                                 by <Link to={`/users/${article.author}`}>{`${article.author}`}</Link></h5>
                         </Media.Body>
-                        <Button>Like ({article.votes})</Button>
+                        {userLoggedIn !== null && <Button>Like ({article.votes})</Button>}
                     </Media>
                 </ul>
             })}
