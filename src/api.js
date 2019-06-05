@@ -21,14 +21,14 @@ export const getTopics = () => {
     });
 }
 
-export const getUserbyUsername = (username) => {
-    return axios.get(baseURL + `users/${username}`).then(({ data: { user } }) => {
-        return user
-    })
-}
-
 export const getAllUsers = () => {
     return axios.get(baseURL + 'users').then(({ data: { users } }) => {
         return users
     });
+}
+
+export const getUserbyUsername = (username) => {
+    return axios.get(baseURL + `users/${username}`).then(({ data: { user } }) => {
+        return user
+    })
 }

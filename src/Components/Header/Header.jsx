@@ -52,7 +52,7 @@ class Header extends Component {
             error && this.setState({ correctUsername: false })
         })
     }
-    
+
     selectSignOut = event => {
         event.preventDefault()
         this.props.logoutUser()

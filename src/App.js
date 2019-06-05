@@ -3,6 +3,8 @@ import { Router } from '@reach/router'
 import Header from './Components/Header/Header'
 import AllArticles from './Components/AllArticles/AllArticlesPage'
 import SingleArticle from './Components/SingleArticle/SingleArticlePage'
+import AllUsersPage from './Components/AllUsers/AllUsersPage'
+import SingleUserPage from './Components/SingleUser/SingleUserPage'
 
 class App extends Component {
   state = { userLoggedIn: null }
@@ -14,6 +16,8 @@ class App extends Component {
           <AllArticles userLoggedIn={this.state.userLoggedIn} path='/home' />
           <AllArticles userLoggedIn={this.state.userLoggedIn} path='/articles' />
           <SingleArticle path='/articles/:article_id' />
+          <AllUsersPage path='/users' />
+          <SingleUserPage path='/users/:username' />
         </Router>
       </div>
     )

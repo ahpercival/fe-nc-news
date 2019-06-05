@@ -16,5 +16,3 @@ const DisplaySingleArticle = props => {
 }
 
 export default DisplaySingleArticle
-
-//      <Link to={`/users/${article.author}`}>{`${article.author}`}</Link>
