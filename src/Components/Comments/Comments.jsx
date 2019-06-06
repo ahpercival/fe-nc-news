@@ -15,14 +15,16 @@ class Comments extends Component {
         return (
             < Container >
                 <h3> COMMENTS </h3>
+                {/* <button>add comment</button> ONLY SHOW IF LOGGED IN */}
                 <ul>
                     {this.state.comments.map(comment => {
                         return (<div>
                             <li key={`body${comment.comment_id}`}>{comment.body}</li>
                             <li key={`auth${comment.comment_id}`}>posted by <Link to={`/users/${comment.author}`}>{`${comment.author}`} </Link></li>
                             <li key={`date${comment.comment_id}`}>{comment.created_at}</li>
-                            <li key={`vote${comment.comment_id}`}>Total votes: {comment.votes}</li>
-                            <button>Vote</button>
+                            <li key={`vote${comment.comment_id}`}>Total likes: {comment.votes}</li>
+                            <button>Like</button>
+                            <button>Dislike</button>
                         </div>
                         )
                     })}

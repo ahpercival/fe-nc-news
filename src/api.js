@@ -48,3 +48,11 @@ export const getCommentsByArticleID = article_id => {
         return comments
     });
 }
+
+//PATCH Requests
+
+export const patchArticleVote = (articleID, newVote) => {
+    return axios.patch(baseURL + `articles/${articleID}`, { inc_votes: newVote }).then(({ data: { article } }) => {
+        return article.votes
+    })
+}

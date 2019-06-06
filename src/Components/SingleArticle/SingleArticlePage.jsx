@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
 import DisplaySingleArticle from './DisplaySingleArticle'
-import { getSingleArticle } from '../../api'
+import { getSingleArticle, patchArticleVote } from '../../api'
 
 class SingleArticle extends Component {
-    state = { singleArticle: {} }
+    state = { singleArticle: {}, changeVotes: 0 }
     componentDidMount() {
         getSingleArticle(this.props.article_id).then((article) => {
-            this.setState({ singleArticle: article });
+            this.setState({ singleArticle: article, vote: article.votes });
         })
     }
     render() {
         return (<div>
-            {this.state.singleArticle && (<DisplaySingleArticle article={this.state.singleArticle} />)}
+            {this.state.singleArticle && (<DisplaySingleArticle article={this.state.singleArticle} handleVote={this.handleVote} changeVotes={this.state.changeVotes} />)}
         </div>)
     }
 
-    //onSubmit ==== event.preventDefault()
+    handleVote = (newVote) => {
+        this.setState(prevState => {
+            return { changeVotes: prevState.changeVotes + newVote }
+        })
+        patchArticleVote(this.props.article_id, this.state.changeVotes + newVote)
+            .catch(err => {
+                this.setState(prevState => {
+                    return { changeVotes: prevState.changeVotes - newVote }
+                })
+            })
+    }
 
 }
 

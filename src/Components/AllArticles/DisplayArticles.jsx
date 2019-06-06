@@ -14,7 +14,6 @@ const DisplayArticles = props => {
                             <h5> <Link to={`/articles/${article.article_id}`}>{article.title} </Link>
                                 by <Link to={`/users/${article.author}`}>{`${article.author}`}</Link></h5>
                         </Media.Body>
-                        {userLoggedIn !== null && <Button>Like ({article.votes})</Button>}
                     </Media>
                 </ul>
             })}
