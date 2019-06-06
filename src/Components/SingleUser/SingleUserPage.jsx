@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getUserbyUsername } from '../../api'
 import DisplaySingleUser from './DisplaySingleUser'
-import AllArticles from '../AllArticles/AllArticlesPage'
+import AllArticles from '../../Pages/ArticleIndex'
 
 class SingleUserPage extends Component {
     state = { singleUser: {} }

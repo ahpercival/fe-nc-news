@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router'
 import Header from './Components/Header/Header'
-import AllArticles from './Components/AllArticles/AllArticlesPage'
+import AllArticles from './Pages/ArticleIndex'
 import SingleArticle from './Components/SingleArticle/SingleArticlePage'
 import AllUsersPage from './Components/AllUsers/AllUsersPage'
 import SingleUserPage from './Components/SingleUser/SingleUserPage'
