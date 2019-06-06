@@ -10,7 +10,8 @@ class AllArticles extends Component {
         articles: [],
         total_count: 0,
         page: 1,
-        perPage: 10
+        perPage: 10,
+        author: '',
     }
 
     get prevDisabled() {
@@ -34,9 +35,8 @@ class AllArticles extends Component {
         }
     }
 
-
-    componentDidMount() {
-        getAllArticles({
+    getArticles = () => {
+        return getAllArticles({
             topic: this.props.topic,
             p: this.state.page,
             limit: this.state.perPage
@@ -49,18 +49,13 @@ class AllArticles extends Component {
         });
     }
 
+    componentDidMount() {
+        this.getArticles()
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.topic !== prevProps.topic || this.state.page !== prevState.page) {
-            getAllArticles({
-                topic: this.props.topic, 
-                p: this.state.page,
-                limit: this.state.perPage
-            }).then((data) => {
-                this.setState({
-                    articles: data.articles,
-                    total_count: +data.total_count,
-                });
-            });
+            this.getArticles()
         }
     }
 
