@@ -6,7 +6,7 @@ const DisplayArticles = props => {
     const { articles, userLoggedIn } = props
     return (
         <Container>
-            <h1>All Articles</h1>
+            <h1>Articles</h1>
             {articles.map(article => {
                 return <ul key={`dispArt${article.article_id}`} className="list-unstyled">
                     <Media as="li">

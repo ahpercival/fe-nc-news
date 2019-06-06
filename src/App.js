@@ -5,7 +5,8 @@ import AllArticles from './Components/AllArticles/AllArticlesPage'
 import SingleArticle from './Components/SingleArticle/SingleArticlePage'
 import AllUsersPage from './Components/AllUsers/AllUsersPage'
 import SingleUserPage from './Components/SingleUser/SingleUserPage'
-// import Comments from './Components/Comments/Comments'
+import HomePage from './Components/HomePage/HomePage'
+
 
 class App extends Component {
   state = { userLoggedIn: null }
@@ -13,9 +14,11 @@ class App extends Component {
     return (
       <div>
         <Header loginUser={this.loginUser} logoutUser={this.logoutUser} userLoggedIn={this.state.userLoggedIn} />
-        <Router>
-          <AllArticles userLoggedIn={this.state.userLoggedIn} path='/home' />
+        <Router primary={false}>
+          <HomePage userLoggedIn={this.state.userLoggedIn} path='/' />
+          <HomePage userLoggedIn={this.state.userLoggedIn} path='/home' />
           <AllArticles userLoggedIn={this.state.userLoggedIn} path='/articles' />
+          <AllArticles userLoggedIn={this.state.userLoggedIn} path='/topic/:topic' />
           <SingleArticle path='/articles/:article_id' />
           <AllUsersPage path='/users' />
           <SingleUserPage path='/users/:username' />
