@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { getCommentsByArticleID } from '../../api'
 import AddComment from './AddComment'
-import DisplayComments from '../../Components/Comments/DisplayComments'
+import DisplayComments from './DisplayComments'
 
 class CommentsIndex extends Component {
 
