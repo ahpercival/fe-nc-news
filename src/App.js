@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router'
 import Header from './Components/Header/Header'
-import AllArticles from './Pages/ArticleIndex'
-import SingleArticle from './Components/SingleArticle/SingleArticlePage'
-import AllUsersPage from './Components/AllUsers/AllUsersPage'
-import SingleUserPage from './Components/SingleUser/SingleUserPage'
+import ArticleIndex from './Pages/Articles/ArticleIndex'
+import Article from './Pages/Articles/Article'
+import UsersIndex from './Pages/Users/UserIndex'
+import User from './Pages/Users/User'
 import HomePage from './Components/HomePage/HomePage'
 
 
@@ -17,11 +17,11 @@ class App extends Component {
         <Router primary={false}>
           <HomePage userLoggedIn={this.state.userLoggedIn} path='/' />
           <HomePage userLoggedIn={this.state.userLoggedIn} path='/home' />
-          <AllArticles userLoggedIn={this.state.userLoggedIn} path='/articles' />
-          <AllArticles userLoggedIn={this.state.userLoggedIn} path='/topic/:topic' />
-          <SingleArticle path='/articles/:article_id' />
-          <AllUsersPage path='/users' />
-          <SingleUserPage path='/users/:username' />
+          <ArticleIndex userLoggedIn={this.state.userLoggedIn} path='/articles' />
+          <ArticleIndex userLoggedIn={this.state.userLoggedIn} path='/topic/:topic' />
+          <Article path='/articles/:article_id' />
+          <UsersIndex path='/users' />
+          <User path='/users/:username' />
         </Router>
       </div>
     )

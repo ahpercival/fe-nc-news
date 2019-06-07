@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import DisplayArticles from '../AllArticles/DisplayArticles'
+import DisplayArticles from '../Articles/DisplayArticles'
 
 const HomePage = props => {
     return (

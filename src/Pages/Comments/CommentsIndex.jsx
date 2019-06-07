@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Link } from '@reach/router'
 import { getCommentsByArticleID } from '../../api'
 
-class Comments extends Component {
+class CommentsIndex extends Component {
 
     state = { comments: [] }
     componentDidMount() {
@@ -33,4 +33,4 @@ class Comments extends Component {
         )
     }
 }
-export default Comments
+export default CommentsIndex

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import DisplayArticles from '../Components/AllArticles/DisplayArticles'
-import AddArticle from '../Components/AllArticles/AddArticle'
-import { getAllArticles } from '../api'
+import DisplayArticles from '../../Components/Articles/DisplayArticles'
+import AddArticle from './AddArticle'
+import { getAllArticles } from '../../api'
 import { Container } from 'react-bootstrap';
-import Pagination from '../Components/Navigation/Pagination'
+import Pagination from '../../Components/Navigation/Pagination'
 
-class AllArticles extends Component {
+class ArticleIndex extends Component {
     state = {
         articles: [],
         total_count: 0,
@@ -39,7 +39,8 @@ class AllArticles extends Component {
         return getAllArticles({
             topic: this.props.topic,
             p: this.state.page,
-            limit: this.state.perPage
+            limit: this.state.perPage,
+            author: this.props.author
         }).then((data) => {
 
             this.setState({
@@ -54,7 +55,7 @@ class AllArticles extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.topic !== prevProps.topic || this.state.page !== prevState.page) {
+        if (this.props.topic !== prevProps.topic || this.state.page !== prevState.page || this.props.author !== prevProps.author) {
             this.getArticles()
         }
     }
@@ -73,11 +74,8 @@ class AllArticles extends Component {
             </Container>)
     }
 
-    // changePage = (pageNumber) => {}
-
-
 }
 
-export default AllArticles
+export default ArticleIndex
 
 

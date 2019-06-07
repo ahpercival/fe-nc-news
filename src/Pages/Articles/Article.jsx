@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import DisplaySingleArticle from './DisplaySingleArticle'
+import DisplaySingleArticle from '../../Components/Articles/DisplaySingleArticle'
 import { getSingleArticle, patchArticleVote } from '../../api'
 
-class SingleArticle extends Component {
+class Article extends Component {
     state = { singleArticle: {}, changeVotes: 0 }
     componentDidMount() {
         getSingleArticle(this.props.article_id).then((article) => {
@@ -29,4 +29,4 @@ class SingleArticle extends Component {
 
 }
 
-export default SingleArticle
+export default Article

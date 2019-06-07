@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { getUserbyUsername } from '../../api'
-import DisplaySingleUser from './DisplaySingleUser'
-import AllArticles from '../../Pages/ArticleIndex'
+import DisplaySingleUser from '../../Components/Users/DisplaySingleUser'
+import ArticleIndex from '../Articles/ArticleIndex'
 
-class SingleUserPage extends Component {
+class User extends Component {
     state = { singleUser: {} }
 
     componentDidMount() {
@@ -15,11 +15,11 @@ class SingleUserPage extends Component {
         return (
             <div>
                 {this.state.singleUser && <DisplaySingleUser singleUser={this.state.singleUser} />}
-                <AllArticles />
+                <ArticleIndex />
             </div>
         )
     }
 
 }
 
-export default SingleUserPage
+export default User
