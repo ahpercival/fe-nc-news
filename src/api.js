@@ -3,7 +3,7 @@ import axios from 'axios'
 const baseURL = 'https://ahp-nc-news.herokuapp.com/api/'
 
 
-//GET REQUESTS
+//GET Requests
 export const getAllArticles = (params) => {
     return axios.get(baseURL + '/articles', { params }).then(({ data }) => {
         return data
@@ -46,4 +46,13 @@ export const patchArticleVote = (articleID, newVote) => {
     return axios.patch(baseURL + `articles/${articleID}`, { inc_votes: newVote }).then(({ data: { article } }) => {
         return article.votes
     })
+}
+
+//POST Requests
+
+export const postNewComment = (article_id, newComment) => {
+    return axios.post(baseURL + `articles/${article_id}/comments`, newComment)
+        .then(({ data: { comment } }) => {
+            return comment
+        })
 }

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Link } from '@reach/router'
 import { getCommentsByArticleID } from '../../api'
+import AddComment from './AddComment'
+import DisplayComments from '../../Components/Comments/DisplayComments'
 
 class CommentsIndex extends Component {
 
-    state = { comments: [] }
+    state = {
+        comments: [],
+    }
     componentDidMount() {
         getCommentsByArticleID(this.props.article_id).then(comments => {
             this.setState({ comments });
@@ -14,23 +17,17 @@ class CommentsIndex extends Component {
     render() {
         return (
             < Container >
-                <h3> COMMENTS </h3>
-                {/* <button>add comment</button> ONLY SHOW IF LOGGED IN */}
-                <ul>
-                    {this.state.comments.map(comment => {
-                        return (<div>
-                            <li key={`body${comment.comment_id}`}>{comment.body}</li>
-                            <li key={`auth${comment.comment_id}`}>posted by <Link to={`/users/${comment.author}`}>{`${comment.author}`} </Link></li>
-                            <li key={`date${comment.comment_id}`}>{comment.created_at}</li>
-                            <li key={`vote${comment.comment_id}`}>Total likes: {comment.votes}</li>
-                            <button>Like</button>
-                            <button>Dislike</button>
-                        </div>
-                        )
-                    })}
-                </ul>
+                {this.props.userLoggedIn && <AddComment userLoggedIn={this.props.userLoggedIn} article_id={this.props.article_id} showNewComment={this.showNewComment} />}
+                <DisplayComments comments={this.state.comments} />
             </Container >
         )
     }
+
+    showNewComment = (postedComment) => {
+        this.setState((currentState) => {
+            return { comments: [postedComment, ...currentState.comments] }
+        })
+    }
+
 }
 export default CommentsIndex

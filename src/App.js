@@ -19,7 +19,7 @@ class App extends Component {
           <HomePage userLoggedIn={this.state.userLoggedIn} path='/home' />
           <ArticleIndex userLoggedIn={this.state.userLoggedIn} path='/articles' />
           <ArticleIndex userLoggedIn={this.state.userLoggedIn} path='/topic/:topic' />
-          <Article path='/articles/:article_id' />
+          <Article path='/articles/:article_id' userLoggedIn={this.state.userLoggedIn} />
           <UsersIndex path='/users' />
           <User path='/users/:username' />
         </Router>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DisplaySingleArticle from '../../Components/Articles/DisplaySingleArticle'
 import { getSingleArticle, patchArticleVote } from '../../api'
+import CommentsIndex from '../Comments/CommentsIndex'
 
 class Article extends Component {
     state = { singleArticle: {}, changeVotes: 0 }
@@ -12,6 +13,7 @@ class Article extends Component {
     render() {
         return (<div>
             {this.state.singleArticle && (<DisplaySingleArticle article={this.state.singleArticle} handleVote={this.handleVote} changeVotes={this.state.changeVotes} />)}
+            <CommentsIndex article_id={this.props.article_id} userLoggedIn={this.props.userLoggedIn} />
         </div>)
     }
 

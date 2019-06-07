@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Button, Media } from 'react-bootstrap';
+import { Container, Media } from 'react-bootstrap';
 import { Link } from '@reach/router'
 
 const DisplayArticles = props => {
-    const { articles, userLoggedIn } = props
+    const { articles } = props
     return (
         <Container>
             <h1>Articles</h1>
