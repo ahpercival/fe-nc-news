@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import { Link } from '@reach/router'
 import UpdateCommentVote from '../../Components/Comments/PatchCommentVote'
+import { deleteComment } from '../../api'
 
 class DisplayComments extends Component {
     state = {
@@ -19,7 +20,15 @@ class DisplayComments extends Component {
                             <li>written by: <Link to={`/users/${comment.author}`}>{`${comment.author}`} </Link></li>
                             <li>posted at: {comment.created_at}</li>
                             <li>Total likes: {comment.votes}</li>
-                            <UpdateCommentVote vote={comment.votes} commentID={comment.comment_id} />
+                            {this.props.userLoggedIn === comment.author &&
+                                <Button onClick={() => { this.props.pressDeleteComment(comment.comment_id) }}>
+                                    Delete
+                                    </Button>
+                            }
+                            <UpdateCommentVote
+                                vote={comment.votes}
+                                commentID={comment.comment_id}
+                            />
                         </div>
                         )
                     })}
