@@ -15,7 +15,7 @@ class User extends Component {
         return (
             <div>
                 {this.state.singleUser && <DisplaySingleUser singleUser={this.state.singleUser} />}
-                <ArticleIndex />
+                <ArticleIndex author={this.props.username} />
             </div>
         )
     }
