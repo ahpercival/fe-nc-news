@@ -24,6 +24,7 @@ const NavbarDisplay = props => {
                         <FormControl onChange={props.updateUserInput} type="text" placeholder="Username" className="mr-sm-2" />
                         <Button disabled={!props.userInput.length} type="submit" variant="outline-success">Login</Button>
                     </Form>}
+
                     {props.userLoggedIn && <Navbar.Brand inline="true">Hello {props.userLoggedIn}</Navbar.Brand>}
                     {props.userLoggedIn && <Button onClick={props.selectSignOut} inline="true">Sign out</Button>}
                 </Navbar.Collapse>

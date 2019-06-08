@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import { getTopics, getUserbyUsername } from '../../api'
 import HeaderDisplay from '../../Components/Header/HeaderDisplay'
 import NavbarDisplay from '../../Components/Header/NavbarDisplay'
+import WrongUsername from './WrongUsername'
 
 class Header extends Component {
     state = { userInput: '', correctUsername: null, topics: [] }
@@ -15,7 +15,7 @@ class Header extends Component {
 
     render() {
         return (
-            <Container>
+            <div>
                 <HeaderDisplay />
                 <NavbarDisplay
                     topics={this.state.topics}
@@ -25,7 +25,10 @@ class Header extends Component {
                     submitUsername={this.submitUsername}
                     updateUserInput={this.updateUserInput}
                 />
-            </Container>
+                {this.state.correctUsername === false && <WrongUsername
+                    selectSignOut={this.selectSignOut}
+                />}
+            </div>
         )
     }
 

@@ -1,7 +1,12 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const HeaderDisplay = () => {
-    return <h1>HEADER</h1>
+    return (
+        <Container>
+            <h1>HEADER</h1>
+        </Container>
+    )
 }
 
 export default HeaderDisplay
