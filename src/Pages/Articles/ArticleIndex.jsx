@@ -12,6 +12,8 @@ class ArticleIndex extends Component {
         page: 1,
         perPage: 10,
         author: '',
+        sort: '',
+        filterOptions: ['created_at', 'comment_count', 'votes']
     }
 
     get prevDisabled() {
@@ -40,7 +42,8 @@ class ArticleIndex extends Component {
             topic: this.props.topic,
             p: this.state.page,
             limit: this.state.perPage,
-            author: this.props.author
+            author: this.props.author,
+            sort_by: this.state.sort
         }).then((data) => {
 
             this.setState({
@@ -60,10 +63,23 @@ class ArticleIndex extends Component {
         }
     }
 
+    sortArticlesBy = event => {
+        this.setState({
+            sort: event.target.value
+            //STATE WILL SET TO WHICHEVER OPTION IS SELECTED BUT ARTICLES NEED TO FILTER
+        })
+    }
+
     render() {
         return (
             <Container>
-                {this.state.articles && (<DisplayArticles userLoggedIn={this.props.userLoggedIn} articles={this.state.articles} />)}
+                {this.state.articles && (<DisplayArticles
+                    userLoggedIn={this.props.userLoggedIn}
+                    articles={this.state.articles}
+                    topic={this.props.topic}
+                    sortArticlesBy={this.sortArticlesBy}
+                    filterOptions={this.state.filterOptions}
+                />)}
                 <Pagination
                     page={this.state.page}
                     prevDisabled={this.prevDisabled}
