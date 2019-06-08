@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router'
-import Header from './Components/Header/Header'
+import Header from './Pages/Header/Header'
 import ArticleIndex from './Pages/Articles/ArticleIndex'
 import Article from './Pages/Articles/Article'
 import UsersIndex from './Pages/Users/UserIndex'
