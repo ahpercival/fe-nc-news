@@ -50,7 +50,6 @@ export const patchArticleVote = (articleID, newVote) => {
 
 export const patchCommentVote = (commentID, newVote) => {
     return axios.patch(baseURL + `/comments/${commentID}`, { inc_votes: newVote }).then(({ data: { comment } }) => {
-        console.log(comment.votes)
         return comment.votes
     })
 }
