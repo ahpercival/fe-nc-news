@@ -37,8 +37,9 @@ class CommentsIndex extends Component {
     pressDeleteComment = comment_id => {
         deleteComment(comment_id)
         this.setState((currentState) => {
-            return { comments: [currentState.comments] }
-            //fix page updating
+            const remainingComments = [...currentState.comments]
+            remainingComments.splice(0, 1)
+            return { comments: remainingComments }
         })
     }
 
