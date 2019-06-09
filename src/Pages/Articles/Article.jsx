@@ -12,7 +12,12 @@ class Article extends Component {
     }
     render() {
         return (<div>
-            {this.state.singleArticle && (<DisplaySingleArticle article={this.state.singleArticle} handleVote={this.handleVote} changeVotes={this.state.changeVotes} />)}
+            {this.state.singleArticle && (<DisplaySingleArticle
+                article={this.state.singleArticle}
+                handleVote={this.handleVote}
+                changeVotes={this.state.changeVotes}
+                userLoggedIn={this.props.userLoggedIn}
+            />)}
             <CommentsIndex article_id={this.props.article_id} userLoggedIn={this.props.userLoggedIn} />
         </div>)
     }
