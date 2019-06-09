@@ -38,6 +38,7 @@ class CommentsIndex extends Component {
         deleteComment(comment_id)
         this.setState((currentState) => {
             const remainingComments = [...currentState.comments]
+            //CHANGE SPLICE FROM '0' TO SELECT COMMENT BY ARRRAY INDEX
             remainingComments.splice(0, 1)
             return { comments: remainingComments }
         })
