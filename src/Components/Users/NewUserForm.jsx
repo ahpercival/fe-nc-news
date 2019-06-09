@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Button, Card, Accordion, Form } from 'react-bootstrap';
+import { Link } from '@reach/router'
 
 const NewUserForm = props => {
     const { username, name, avatar_url } = props
@@ -33,7 +34,7 @@ const NewUserForm = props => {
                                 </Form.Group>
                                 <Button disabled={!activeButton} variant="primary" type="submit">
                                     Submit
-                                 </Button>
+                                </Button>
                             </Form>
                         </Card.Body>
                     </Accordion.Collapse>

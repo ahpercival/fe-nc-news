@@ -16,6 +16,8 @@ class ArticleIndex extends Component {
         filterOptions: ['created_at', 'comment_count', 'votes']
     }
 
+    //RESET PAGE & TOTAL_COUNT WHEN NAVIGATING TO DIFFERENT ARTICLE PAGE
+
     get prevDisabled() {
         return !(this.state.page - 1)
     }
@@ -72,7 +74,7 @@ class ArticleIndex extends Component {
             sort: event.target.value
         })
         this.getArticles()
-        //PAGE ON CLICK BEHIND FILTER
+        //FIX SELECTOR TO UPDATE PAGE IN REAL TIME
     }
 
     render() {
@@ -91,7 +93,9 @@ class ArticleIndex extends Component {
                     nextDisabled={this.nextDisabled}
                     actions={this.actions}
                 />
-                {this.state.articles && this.props.userLoggedIn && <AddArticle topic={this.state.articles.topic} />}
+                {this.state.articles && this.props.userLoggedIn && <AddArticle
+                    userLoggedIn={this.props.userLoggedIn}
+                    topic={this.state.articles.topic} />}
             </Container>)
     }
 

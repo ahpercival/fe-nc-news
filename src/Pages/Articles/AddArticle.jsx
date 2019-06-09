@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { getTopics } from '../../api'
+import { postNewArticle } from '../../api'
 
 class AddArticle extends Component {
     state = {
@@ -9,16 +10,18 @@ class AddArticle extends Component {
         body: '',
         topic: ''
     }
+
     componentDidMount() {
         getTopics().then((topicSelection) => {
             this.setState({ topicSelection });
         });
     }
     render() {
+        const activeButton = !!this.state.title && !!this.state.body && !!this.state.topic
         return (
             <Container>
                 <h3>Post a new article</h3>
-                <Form>
+                <Form onSubmit={this.addNewArticle}>
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>Title</Form.Label>
                         <Form.Control onChange={event => { this.updateUserInput('title', event) }} type="text" placeholder="Name of your article" />
@@ -36,7 +39,7 @@ class AddArticle extends Component {
                         <Form.Label>Body</Form.Label>
                         <Form.Control onChange={event => { this.updateUserInput('body', event) }} as="textarea" rows="3" />
                     </Form.Group>
-                    <Button>Submit</Button>
+                    <Button type="submit" disabled={!activeButton} >Submit</Button>
                 </Form>
 
             </Container>)
@@ -45,6 +48,14 @@ class AddArticle extends Component {
     updateUserInput = (key, event) => {
         this.setState({ [key]: event.target.value });
     };
+
+    addNewArticle = (event) => {
+        event.preventDefault()
+        const newArticle = { author: this.props.userLoggedIn, title: this.state.title, body: this.state.body, topic: this.state.topic }
+        postNewArticle(newArticle)
+        this.setState({ title: '', body: '', topic: '' });
+        //NAVIGATE TO NEW ARTICLE UPON SUBMIT
+    }
 
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import NewUserForm from '../../Components/Users/NewUserForm'
 import { postNewUser } from '../../api'
+import { Link } from '@reach/router'
 
 class PostNewUser extends Component {
     state = { username: '', name: '', avatar_url: '' }
@@ -29,7 +30,7 @@ class PostNewUser extends Component {
         event.preventDefault()
         postNewUser(this.state.username, this.state.name, this.state.avatar_url)
         this.setState({ username: '', name: '', avatar_url: '' });
-        //SHOW NEW USER PROFILE
+        //NAVIGATE TO NEW USER PROFILE UPON SUBMIT
     }
 
 }

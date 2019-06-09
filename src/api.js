@@ -70,6 +70,13 @@ export const postNewUser = (username, name, avatar_url) => {
         })
 }
 
+export const postNewArticle = (newArticle) => {
+    return axios.post(baseURL + 'articles', newArticle)
+        .then(({ data: { article } }) => {
+            return article
+        })
+}
+
 
 //DELETE Request
 
