@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getTopics, getUserbyUsername } from '../../api'
-import HeaderDisplay from '../../Components/Header/HeaderDisplay'
-import NavbarDisplay from '../../Components/Header/NavbarDisplay'
+import HeaderDisplay from '../../Components/Navigation/HeaderDisplay'
+import NavbarDisplay from '../../Components/Navigation/NavbarDisplay'
 import WrongUsername from './WrongUsername'
 
 class Header extends Component {

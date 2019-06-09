@@ -63,6 +63,13 @@ export const postNewComment = (article_id, newComment) => {
         })
 }
 
+export const postNewUser = (username, name, avatar_url) => {
+    return axios.post(baseURL + 'users', { username, name, avatar_url })
+        .then(({ data: { user } }) => {
+            return user
+        })
+}
+
 
 //DELETE Request
 

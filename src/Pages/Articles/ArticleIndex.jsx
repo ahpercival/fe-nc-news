@@ -43,7 +43,7 @@ class ArticleIndex extends Component {
             p: this.state.page,
             limit: this.state.perPage,
             author: this.props.author,
-            sort_by: this.state.sort
+            sort_by: this.state.sort,
         }).then((data) => {
 
             this.setState({
@@ -58,7 +58,11 @@ class ArticleIndex extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.topic !== prevProps.topic || this.state.page !== prevState.page || this.props.author !== prevProps.author) {
+        if (this.props.topic !== prevProps.topic ||
+            this.state.page !== prevState.page ||
+            this.props.author !== prevProps.author ||
+            this.state.sort_by !== prevState.sort_by ||
+            this.state.total_count !== prevState.total_count) {
             this.getArticles()
         }
     }
@@ -66,8 +70,9 @@ class ArticleIndex extends Component {
     sortArticlesBy = event => {
         this.setState({
             sort: event.target.value
-            //STATE WILL SET TO WHICHEVER OPTION IS SELECTED BUT ARTICLES NEED TO FILTER
         })
+        this.getArticles()
+        //PAGE ON CLICK BEHIND FILTER
     }
 
     render() {

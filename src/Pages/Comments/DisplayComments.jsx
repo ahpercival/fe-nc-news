@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link } from '@reach/router'
 import UpdateCommentVote from '../../Components/Comments/PatchCommentVote'
-import { deleteComment } from '../../api'
 
 class DisplayComments extends Component {
     state = {
