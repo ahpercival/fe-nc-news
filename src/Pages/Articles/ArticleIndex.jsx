@@ -16,10 +16,6 @@ class ArticleIndex extends Component {
         filterOptions: ['created_at', 'comment_count', 'votes']
     }
 
-    //RESET PAGE & TOTAL_COUNT WHEN NAVIGATING TO DIFFERENT ARTICLE PAGE
-    /* when this.props.uri changes = this.state.page === 1
-    */
-
     get prevDisabled() {
         return !(this.state.page - 1)
     }
@@ -62,10 +58,19 @@ class ArticleIndex extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+
+        if (this.props.topic !== prevProps.topic ||
+            this.state.sort !== prevState.sort) {
+            this.setState({
+                page: 1,
+                total_count: 0
+            })
+        }
+
         if (this.props.topic !== prevProps.topic ||
             this.state.page !== prevState.page ||
             this.props.author !== prevProps.author ||
-            this.state.sort_by !== prevState.sort_by ||
+            this.state.sort !== prevState.sort ||
             this.state.total_count !== prevState.total_count ||
             this.props.uri !== prevProps.uri) {
             this.getArticles()
@@ -76,8 +81,6 @@ class ArticleIndex extends Component {
         this.setState({
             sort: event.target.value
         })
-        this.getArticles()
-        //FIX SELECTOR TO UPDATE PAGE IN REAL TIME
     }
 
     render() {
