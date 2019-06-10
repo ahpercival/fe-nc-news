@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { getTopics, postNewArticle } from '../../api'
+import { navigate } from '@reach/router'
 
 class AddArticle extends Component {
     state = {
@@ -51,9 +52,10 @@ class AddArticle extends Component {
     addNewArticle = (event) => {
         event.preventDefault()
         const newArticle = { author: this.props.userLoggedIn, title: this.state.title, body: this.state.body, topic: this.state.topic }
-        postNewArticle(newArticle)
+        postNewArticle(newArticle).then(article => {
+            navigate(`/articles/${article.article_id}`)
+        })
         this.setState({ title: '', body: '', topic: '' });
-        //NAVIGATE TO NEW ARTICLE UPON SUBMIT
     }
 
 }

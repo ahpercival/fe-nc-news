@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import DisplaySingleArticle from '../../Components/Articles/DisplaySingleArticle'
-import { getSingleArticle, patchArticleVote } from '../../api'
+import { getSingleArticle, patchArticleVote, deleteArticle } from '../../api'
 import CommentsIndex from '../Comments/CommentsIndex'
+import { navigate } from '@reach/router'
 
 class Article extends Component {
     state = { singleArticle: {}, changeVotes: 0 }
@@ -17,6 +18,7 @@ class Article extends Component {
                 handleVote={this.handleVote}
                 changeVotes={this.state.changeVotes}
                 userLoggedIn={this.props.userLoggedIn}
+                handleDelete={this.handleDelete}
             />)}
             <CommentsIndex article_id={this.props.article_id} userLoggedIn={this.props.userLoggedIn} />
         </div>)
@@ -32,6 +34,11 @@ class Article extends Component {
                     return { changeVotes: prevState.changeVotes - newVote }
                 })
             })
+    }
+
+    handleDelete = (article_id) => {
+        deleteArticle(article_id)
+        navigate('/articles')
     }
 
 }

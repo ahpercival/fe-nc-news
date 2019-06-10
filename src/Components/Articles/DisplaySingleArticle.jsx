@@ -1,11 +1,9 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link } from '@reach/router'
-import { deleteArticle } from '../../api'
-
 
 const DisplaySingleArticle = props => {
-    const { article, handleVote } = props
+    const { article, handleVote, handleDelete } = props
 
     return (
         <Container>
@@ -14,17 +12,19 @@ const DisplaySingleArticle = props => {
             <h4>by <Link to={`/users/${article.author}`}>{`${article.author}`} </Link>
                 posted at {article.created_at}</h4>
             {props.userLoggedIn === article.author &&
-                <Button onClick={() => { deleteArticle(article.article_id) }}>
+                <Button onClick={() => { handleDelete(article.article_id) }}>
                     Delete article
                     {/* //NAVIGATE TO /articles UPON DELETE */}
                 </Button>}
             <p>{article.body}</p>
-            {props.userLoggedIn && <div>
-                <Button disabled={props.changeVotes === 1} onClick={() => { handleVote(1) }}>Like</Button>
-                <Button disabled={props.changeVotes === - 1} onClick={() => { handleVote(-1) }}>Dislike</Button>
-            </div>}
+            {
+                props.userLoggedIn && <div>
+                    <Button disabled={props.changeVotes === 1} onClick={() => { handleVote(1) }}>Like</Button>
+                    <Button disabled={props.changeVotes === - 1} onClick={() => { handleVote(-1) }}>Dislike</Button>
+                </div>
+            }
             <h4>Total likes: {article.votes + props.changeVotes}</h4>
-        </Container>
+        </Container >
     )
 
 }

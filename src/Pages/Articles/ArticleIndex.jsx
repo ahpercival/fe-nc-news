@@ -17,6 +17,8 @@ class ArticleIndex extends Component {
     }
 
     //RESET PAGE & TOTAL_COUNT WHEN NAVIGATING TO DIFFERENT ARTICLE PAGE
+    /* when this.props.uri changes = this.state.page === 1
+    */
 
     get prevDisabled() {
         return !(this.state.page - 1)
@@ -64,7 +66,8 @@ class ArticleIndex extends Component {
             this.state.page !== prevState.page ||
             this.props.author !== prevProps.author ||
             this.state.sort_by !== prevState.sort_by ||
-            this.state.total_count !== prevState.total_count) {
+            this.state.total_count !== prevState.total_count ||
+            this.props.uri !== prevProps.uri) {
             this.getArticles()
         }
     }

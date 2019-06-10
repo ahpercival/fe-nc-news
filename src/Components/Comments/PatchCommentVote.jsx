@@ -11,8 +11,8 @@ class UpdateCommentVote extends Component {
             <Container>
                 <h4>Total Likes: {this.props.vote + this.state.changeVotes}</h4>
                 {this.props.userLoggedIn && <div>
-                    <Button onClick={() => { this.handleVote(-1) }}>Dislike</Button>
-                    <Button onClick={() => { this.handleVote(1) }}>Like</Button>
+                    <Button disabled={this.state.changeVotes === -1} onClick={() => { this.handleVote(-1) }}>Dislike</Button>
+                    <Button disabled={this.state.changeVotes === 1} onClick={() => { this.handleVote(1) }}>Like</Button>
                 </div>}
             </Container >
         )
