@@ -8,7 +8,6 @@ const DisplayArticles = props => {
     const displayTopicHeader = () => {
         return (<div>
             <h1>{props.topic}</h1>
-            <h3>CHANGE TO TOPIC DESCRIPTION</h3>
         </div>)
     }
 

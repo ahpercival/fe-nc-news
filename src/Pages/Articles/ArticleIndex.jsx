@@ -102,6 +102,7 @@ class ArticleIndex extends Component {
                 {this.state.articles && this.props.userLoggedIn && <AddArticle
                     userLoggedIn={this.props.userLoggedIn}
                     topic={this.state.articles.topic} />}
+                <br /><br /><br />
             </Container>)
     }
 

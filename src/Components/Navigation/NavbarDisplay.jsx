@@ -6,13 +6,13 @@ const NavbarDisplay = props => {
     return (
         <Container>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand>AHP News</Navbar.Brand>
+                <Navbar.Brand>NC News</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link><Link to='/home'>Home</Link></Nav.Link>
                         <Nav.Link><Link to='/articles'>Articles</Link></Nav.Link>
-                        <NavDropdown title="Topics" id="basic-nav-dropdown">
+                        <NavDropdown title={<Link to='/topic'>Topics</Link>} id="basic-nav-dropdown">
                             {props.topics.map(topic => {
                                 return <NavDropdown.Item key={`droMe${topic.slug}`}><Link to={`/topic/${topic.slug}`}>{topic.slug}</Link></NavDropdown.Item>
                             })}

@@ -6,6 +6,7 @@ import Article from './Pages/Articles/Article'
 import UsersIndex from './Pages/Users/UserIndex'
 import User from './Pages/Users/User'
 import HomePage from './Components/HomePage/HomePage'
+import TopicIndex from './Pages/Topic/TopicIndex'
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
           <Article path='/articles/:article_id' userLoggedIn={this.state.userLoggedIn} />
           <UsersIndex path='/users' userLoggedIn={this.state.userLoggedIn} />
           <User path='/users/:username' />
+          <TopicIndex path='/topic' />
         </Router>
       </div>
     )

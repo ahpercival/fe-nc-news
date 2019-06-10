@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link } from '@reach/router'
-import UpdateCommentVote from '../../Components/Comments/PatchCommentVote'
+import UpdateCommentVote from './PatchCommentVote'
 
 class DisplayComments extends Component {
     state = {
