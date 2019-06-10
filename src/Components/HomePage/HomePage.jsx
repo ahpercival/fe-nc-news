@@ -45,7 +45,7 @@ const HomePage = () => {
 
                 </Col>
             </Row>
-            <br /><br /><br />
+            <br />
         </Container>)
 }
 

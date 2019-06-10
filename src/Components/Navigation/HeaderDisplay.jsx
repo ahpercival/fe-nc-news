@@ -4,7 +4,7 @@ import { Container, Image } from 'react-bootstrap';
 const HeaderDisplay = () => {
     return (
         <Container>
-            <Image src="http://www.sclance.com/pngs/png-header/png_header_1062994.png" fluid />
+            <Image src="https://previews.123rf.com/images/saicle/saicle1607/saicle160700174/60694171-abstract-technology-web-header-banner-vector-header-template-with-map-circut-board-and-squares-banne.jpg" fluid />
         </Container>
     )
 }

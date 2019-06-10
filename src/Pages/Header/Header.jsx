@@ -24,6 +24,7 @@ class Header extends Component {
                     selectSignOut={this.selectSignOut}
                     submitUsername={this.submitUsername}
                     updateUserInput={this.updateUserInput}
+                    logInAsGuest={this.logInAsGuest}
                 />
                 {this.state.correctUsername === false && <WrongUsername
                     selectSignOut={this.selectSignOut}
@@ -32,8 +33,12 @@ class Header extends Component {
         )
     }
 
-    updateUserInput = event => {
+    updateUserInput = (event) => {
         this.setState({ userInput: event.target.value });
+    };
+
+    logInAsGuest = (event) => {
+        this.setState({ userInput: 'Guest' });
     };
 
     submitUsername = event => {

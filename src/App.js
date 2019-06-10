@@ -7,6 +7,7 @@ import UsersIndex from './Pages/Users/UserIndex'
 import User from './Pages/Users/User'
 import HomePage from './Components/HomePage/HomePage'
 import TopicIndex from './Pages/Topic/TopicIndex'
+import FooterDisplay from './Components/Navigation/FooterDisplay'
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
           <User path='/users/:username' />
           <TopicIndex path='/topic' userLoggedIn={this.state.userLoggedIn} />
         </Router>
+        <FooterDisplay/>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { getTopics, postNewArticle } from '../../api'
-import { navigate } from '@reach/router'
+import { navigate, Link } from '@reach/router'
 
 class AddArticle extends Component {
     state = {
@@ -22,18 +22,21 @@ class AddArticle extends Component {
             <Container>
                 <h3>Post a new article</h3>
                 <Form onSubmit={this.addNewArticle}>
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control onChange={event => { this.updateUserInput('title', event) }} type="text" placeholder="Name of your article" />
-                    </Form.Group>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Topic</Form.Label>
+                        <Form.Text>
+                            Select form the list below or add a <Link to='/topic'>new topic here</Link>
+                        </Form.Text>
                         <Form.Control onChange={event => { this.updateUserInput('topic', event) }} as="select">
                             <option>Please select topic</option>
                             {this.state.topicSelection.map(topic => {
                                 return <option key={`topSel${topic.slug}`}>{topic.slug}</option>
                             })}
                         </Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control onChange={event => { this.updateUserInput('title', event) }} type="text" placeholder="Name of your article" />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Body</Form.Label>

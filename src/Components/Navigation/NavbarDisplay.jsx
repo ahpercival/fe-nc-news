@@ -19,13 +19,15 @@ const NavbarDisplay = props => {
                         </NavDropdown>
                         <Nav.Link><Link to='/users'>Users</Link></Nav.Link>
                     </Nav>
-
                     {!props.userLoggedIn && <Form onSubmit={props.submitUsername} inline>
                         <FormControl onChange={props.updateUserInput} type="text" placeholder="Username" className="mr-sm-2" />
-                        <Button disabled={!props.userInput.length} type="submit" variant="outline-success">Login</Button>
+                        <Button disabled={!props.userInput.length} type="submit" variant="outline-success">Log in as user</Button>
                     </Form>}
-
-                    {props.userLoggedIn && <Navbar.Brand inline="true">Hello {props.userLoggedIn}</Navbar.Brand>}
+                    {!props.userLoggedIn && <Form onSubmit={props.submitUsername}>
+                        <Navbar.Brand>or</Navbar.Brand>
+                        <Button onClick={props.logInAsGuest} type="submit" variant="outline-success">Log in as guest</Button>
+                    </Form>}
+                    {props.userLoggedIn && <Navbar.Brand inline="true">Signed in as {props.userLoggedIn}</Navbar.Brand>}
                     {props.userLoggedIn && <Button onClick={props.selectSignOut} inline="true">Sign out</Button>}
                 </Navbar.Collapse>
             </Navbar>

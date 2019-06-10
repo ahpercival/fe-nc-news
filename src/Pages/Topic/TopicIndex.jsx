@@ -48,7 +48,6 @@ class TopicIndex extends Component {
                      </Button>
                     </Form>
                 </div>}
-                <br />
             </Container>
         )
     }
