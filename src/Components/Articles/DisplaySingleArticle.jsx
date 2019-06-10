@@ -19,11 +19,11 @@ const DisplaySingleArticle = props => {
                     {/* //NAVIGATE TO /articles UPON DELETE */}
                 </Button>}
             <p>{article.body}</p>
-            <div>
+            {props.userLoggedIn && <div>
                 <Button disabled={props.changeVotes === 1} onClick={() => { handleVote(1) }}>Like</Button>
                 <Button disabled={props.changeVotes === - 1} onClick={() => { handleVote(-1) }}>Dislike</Button>
-                <h4>Total likes: {article.votes + props.changeVotes}</h4>
-            </div>
+            </div>}
+            <h4>Total likes: {article.votes + props.changeVotes}</h4>
         </Container>
     )
 

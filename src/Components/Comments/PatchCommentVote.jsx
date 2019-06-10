@@ -9,9 +9,11 @@ class UpdateCommentVote extends Component {
 
         return (
             <Container>
-                <h4>Total Vote: {this.props.vote + this.state.changeVotes}</h4>
-                <Button onClick={() => { this.handleVote(1) }}>Like</Button>
-                <Button onClick={() => { this.handleVote(-1) }}>Dislike</Button>
+                <h4>Total Likes: {this.props.vote + this.state.changeVotes}</h4>
+                {this.props.userLoggedIn && <div>
+                    <Button onClick={() => { this.handleVote(-1) }}>Dislike</Button>
+                    <Button onClick={() => { this.handleVote(1) }}>Like</Button>
+                </div>}
             </Container >
         )
     }

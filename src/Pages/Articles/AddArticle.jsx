@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import { getTopics } from '../../api'
-import { postNewArticle } from '../../api'
+import { getTopics, postNewArticle } from '../../api'
 
 class AddArticle extends Component {
     state = {

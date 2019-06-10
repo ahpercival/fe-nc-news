@@ -16,6 +16,8 @@ class UsersIndex extends Component {
     render() {
         return <Container>
             <h1> Our users </h1>
+            <PostNewUser />
+            <br />
             <ul>
                 {this.state.users.map(user => {
                     return <li key={`UN${user.username}`}>
@@ -23,7 +25,6 @@ class UsersIndex extends Component {
                     </li>
                 })}
             </ul>
-            <PostNewUser />
         </Container>
     }
 }

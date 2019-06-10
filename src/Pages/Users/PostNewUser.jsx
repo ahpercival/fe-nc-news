@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import NewUserForm from '../../Components/Users/NewUserForm'
 import { postNewUser } from '../../api'
-import { Link } from '@reach/router'
 
 class PostNewUser extends Component {
     state = { username: '', name: '', avatar_url: '' }

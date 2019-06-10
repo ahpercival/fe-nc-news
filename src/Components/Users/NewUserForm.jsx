@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Button, Card, Accordion, Form } from 'react-bootstrap';
-import { Link } from '@reach/router'
 
 const NewUserForm = props => {
     const { username, name, avatar_url } = props

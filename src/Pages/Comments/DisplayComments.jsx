@@ -27,6 +27,7 @@ class DisplayComments extends Component {
                             <UpdateCommentVote
                                 vote={comment.votes}
                                 commentID={comment.comment_id}
+                                userLoggedIn={this.props.userLoggedIn}
                             />
                         </div>
                         )
