@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import { getTopics } from '../../api'
-import { Link } from '@reach/router'
+import { getTopics, postNewTopic } from '../../api'
+import { Link, navigate } from '@reach/router'
 
 class TopicIndex extends Component {
-    state = { topics: [] }
+    state = { topics: [], slug: '', description: '' }
 
     getAllTopics = () => {
         return getTopics()
@@ -20,6 +20,7 @@ class TopicIndex extends Component {
     }
 
     render() {
+        const activeButton = !!this.state.slug && !!this.state.description
         return (
             <Container>
                 <h1>Topics</h1>
@@ -31,24 +32,42 @@ class TopicIndex extends Component {
                         </li>)
                     })}
                 </ul>
-                <h2>Add New Topic</h2>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Topic</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Topic" />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control type="text" placeholder="Description of Topic" />
-                    </Form.Group>
-                    <Button disabled={true} variant="primary" type="submit">
-                        Submit
+                {this.props.userLoggedIn && <div>
+                    <h2>Add New Topic</h2>
+                    <Form onSubmit={this.addNewTopic}>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Topic</Form.Label>
+                            <Form.Control onChange={event => { this.updateUserInput('slug', event) }} type="text" placeholder="Enter Topic" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control onChange={event => { this.updateUserInput('description', event) }} type="text" placeholder="Description of Topic" />
+                        </Form.Group>
+                        <Button disabled={!activeButton} variant="primary" type="submit">
+                            Submit
                      </Button>
-                </Form>
+                    </Form>
+                </div>}
                 <br />
             </Container>
         )
     }
+
+    updateUserInput = (topicInfo, event) => {
+        this.setState({ [topicInfo]: event.target.value });
+    };
+
+
+    addNewTopic = (event) => {
+        event.preventDefault()
+        const newTopic = { slug: this.state.slug, description: this.state.description }
+        postNewTopic(newTopic)
+            .then(topic => {
+                navigate(`/topic/${topic.slug}`)
+            })
+        this.setState({ slug: '', description: '' });
+    }
+
 }
 
 export default TopicIndex

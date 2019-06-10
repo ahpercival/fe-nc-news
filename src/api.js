@@ -77,6 +77,13 @@ export const postNewArticle = (newArticle) => {
         })
 }
 
+export const postNewTopic = (newTopic) => {
+    return axios.post(baseURL + 'topics', newTopic)
+        .then(({ data: { topic } }) => {
+            return topic
+        })
+}
+
 
 //DELETE Request
 
