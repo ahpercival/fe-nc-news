@@ -16,7 +16,7 @@ class UsersIndex extends Component {
     render() {
         return <Container>
             <h1> Our users </h1>
-            <PostNewUser />
+            {!this.props.userLoggedIn && <PostNewUser />}
             <br />
             <ul>
                 {this.state.users.map(user => {
