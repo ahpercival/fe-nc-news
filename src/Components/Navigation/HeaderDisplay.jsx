@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 
 const HeaderDisplay = () => {
     return (
         <Container>
-            <h1>HEADER</h1>
+            <Image src="http://www.sclance.com/pngs/png-header/png_header_1062994.png" fluid />
         </Container>
     )
 }
