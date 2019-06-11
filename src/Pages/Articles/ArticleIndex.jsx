@@ -54,7 +54,8 @@ class ArticleIndex extends Component {
     }
 
     componentDidMount() {
-        this.getArticles()
+        this.getArticles();
+        window.scrollTo(0, 0);
     }
 
     componentDidUpdate(prevProps, prevState) {

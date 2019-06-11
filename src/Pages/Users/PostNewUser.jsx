@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
 import NewUserForm from '../../Components/Users/NewUserForm'
 import { postNewUser } from '../../api'
 import { navigate } from '@reach/router'
@@ -10,15 +9,13 @@ class PostNewUser extends Component {
     render() {
         return (
 
-            <Container>
-                <NewUserForm
-                    updateUserInput={this.updateUserInput}
-                    username={this.state.username}
-                    name={this.state.name}
-                    avatar_url={this.state.avatar_url}
-                    addNewUser={this.addNewUser}
-                />
-            </Container>
+            <NewUserForm
+                updateUserInput={this.updateUserInput}
+                username={this.state.username}
+                name={this.state.name}
+                avatar_url={this.state.avatar_url}
+                addNewUser={this.addNewUser}
+            />
         )
     }
 

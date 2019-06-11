@@ -5,7 +5,7 @@ import { Link } from '@reach/router'
 const NavbarDisplay = props => {
     return (
         <Container>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light" expand="lg" className="mb-4">
                 <Navbar.Brand>NC News</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -24,7 +24,7 @@ const NavbarDisplay = props => {
                         <Button disabled={!props.userInput.length} type="submit" variant="outline-success">Log in as user</Button>
                     </Form>}
                     {!props.userLoggedIn && <Form onSubmit={props.submitUsername}>
-                        <Navbar.Brand>or</Navbar.Brand>
+                        <span className="m-2">or</span>
                         <Button onClick={props.logInAsGuest} type="submit" variant="outline-success">Log in as guest</Button>
                     </Form>}
                     {props.userLoggedIn && <Navbar.Brand inline="true">Signed in as {props.userLoggedIn}</Navbar.Brand>}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Card } from 'react-bootstrap';
 import { Link } from '@reach/router'
 import UpdateCommentVote from './PatchCommentVote'
 import { convertDate } from '../../utils'
@@ -16,20 +16,26 @@ class DisplayComments extends Component {
                 <ul>
                     {this.props.comments.map(comment => {
                         return (<div key={`body${comment.comment_id}`}>
-                            <li>{comment.body}</li>
-                            <li>written by: <Link to={`/users/${comment.author}`}>{`${comment.author}`} </Link></li>
-                            <li>posted at: {convertDate(comment.created_at)}</li>
-                            <li>Total likes: {comment.votes}</li>
-                            {this.props.userLoggedIn === comment.author &&
-                                <Button onClick={() => { this.props.pressDeleteComment(comment.comment_id) }}>
-                                    Delete
-                                    </Button>
-                            }
-                            <UpdateCommentVote
-                                vote={comment.votes}
-                                commentID={comment.comment_id}
-                                userLoggedIn={this.props.userLoggedIn}
-                            />
+                            <Card style={{ width: '60rem' }}>
+                                <Card.Body>
+                                    <Card.Title>{comment.body}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">written by: <Link to={`/users/${comment.author}`}>{`${comment.author}`} </Link></Card.Subtitle>
+                                    <Card.Text>
+                                        posted at: {convertDate(comment.created_at)}
+                                        <br />
+                                        <UpdateCommentVote
+                                            vote={comment.votes}
+                                            commentID={comment.comment_id}
+                                            userLoggedIn={this.props.userLoggedIn}
+                                        />
+                                        {this.props.userLoggedIn === comment.author &&
+                                            <Button onClick={() => { this.props.pressDeleteComment(comment.comment_id) }}>
+                                                Delete Comment
+                                            </Button>
+                                        }
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
                         </div>
                         )
                     })}

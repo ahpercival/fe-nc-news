@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getUserbyUsername } from '../../api'
 import DisplaySingleUser from '../../Components/Users/DisplaySingleUser'
 import ArticleIndex from '../Articles/ArticleIndex'
+import { Container, Row, Col } from 'react-bootstrap';
+import PageTitle from '../../Components/Title/PageTitle'
 
 class User extends Component {
     state = { singleUser: {} }
@@ -14,8 +16,27 @@ class User extends Component {
     render() {
         return (
             <div>
-                {this.state.singleUser && <DisplaySingleUser singleUser={this.state.singleUser} />}
-                <ArticleIndex author={this.props.username} />
+                <section>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <PageTitle>User Profile</PageTitle>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+                <section>
+                    <Container>
+                        <Row>
+                            <Col md="auto mb-4">
+                                {this.state.singleUser && <DisplaySingleUser singleUser={this.state.singleUser} />}
+                            </Col>
+                            <Col>
+                                <ArticleIndex author={this.props.username} />
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
             </div>
         )
     }
