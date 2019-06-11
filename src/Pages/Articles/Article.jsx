@@ -10,6 +10,7 @@ class Article extends Component {
         getSingleArticle(this.props.article_id).then((article) => {
             this.setState({ singleArticle: article, vote: article.votes });
         })
+        window.scrollTo(0, 0);
     }
     render() {
         return (<div>

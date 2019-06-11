@@ -14,6 +14,7 @@ class UsersIndex extends Component {
         getAllUsers().then((users) => {
             this.setState({ users });
         });
+        window.scrollTo(0, 0);
     }
     render() {
         return (

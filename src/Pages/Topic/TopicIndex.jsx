@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, Card } from 'react-bootstrap';
 import { getTopics, postNewTopic } from '../../api'
 import { Link, navigate } from '@reach/router'
 
@@ -17,6 +17,7 @@ class TopicIndex extends Component {
 
     componentDidMount() {
         this.getAllTopics()
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -24,14 +25,21 @@ class TopicIndex extends Component {
         return (
             <Container>
                 <h1>Topics</h1>
-                <ul>
+
+                <Row>
                     {this.state.topics.map(topic => {
-                        return (<li>
-                            <h4><Link to={`/topic/${topic.slug}`}>{topic.slug}</Link></h4>
-                            <p>{topic.description}</p>
-                        </li>)
+                        return (
+                            <Col sm="6" md="3">
+                                <Card className="w-100 mb-3">
+                                    <Card.Body>
+                                        <Card.Title><Link to={`/topic/${topic.slug}`}>{topic.slug}</Link></Card.Title>
+                                        <p>{topic.description}</p>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        )
                     })}
-                </ul>
+                </Row>
                 {this.props.userLoggedIn && <div>
                     <h2>Add New Topic</h2>
                     <Form onSubmit={this.addNewTopic}>

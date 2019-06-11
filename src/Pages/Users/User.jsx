@@ -12,6 +12,7 @@ class User extends Component {
         getUserbyUsername(this.props.username).then((singleUser) => {
             this.setState({ singleUser });
         });
+        window.scrollTo(0, 0);
     }
     render() {
         return (
