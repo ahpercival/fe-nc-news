@@ -4,8 +4,8 @@ import { postNewComment } from '../../api'
 
 class AddComment extends Component {
     state = { comment: '' }
-
     render() {
+        const activeButton = !!this.state.comment 
         return (
             <Container>
                 <Accordion >
@@ -20,9 +20,9 @@ class AddComment extends Component {
                                 <Form.Group controlId="formBasicPassword">
                                     <Form.Control onChange={this.updateUserInput} as="textarea" rows="3" placeholder="Add Comment" />
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button disabled={!activeButton} variant="primary" type="submit">
                                     Submit
-                         </Button>
+                                </Button>
                             </Form>
                         </Accordion.Collapse>
                     </Card>
