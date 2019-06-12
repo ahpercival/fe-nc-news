@@ -37,13 +37,17 @@ class ArticleIndex extends Component {
         }
     }
 
+
+
     getArticles = () => {
+        const { author, page, perPage, sort } = this.state
+        const { topic } = this.props
         return getAllArticles({
-            topic: this.props.topic,
-            p: this.state.page,
-            limit: this.state.perPage,
-            author: this.props.author,
-            sort_by: this.state.sort,
+            topic: topic,
+            p: page,
+            limit: perPage,
+            author: author,
+            sort_by: sort,
         }).then((data) => {
 
             this.setState({
@@ -59,21 +63,23 @@ class ArticleIndex extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        const { author, page, sort, total_count } = this.state
+        const { topic, uri } = this.props
 
-        if (this.props.topic !== prevProps.topic ||
-            this.state.sort !== prevState.sort) {
+        if (topic !== prevProps.topic ||
+            sort !== prevState.sort) {
             this.setState({
                 page: 1,
                 total_count: 0
             })
         }
 
-        if (this.props.topic !== prevProps.topic ||
-            this.state.page !== prevState.page ||
-            this.props.author !== prevProps.author ||
-            this.state.sort !== prevState.sort ||
-            this.state.total_count !== prevState.total_count ||
-            this.props.uri !== prevProps.uri) {
+        if (topic !== prevProps.topic ||
+            page !== prevState.page ||
+            author !== prevProps.author ||
+            sort !== prevState.sort ||
+            total_count !== prevState.total_count ||
+            uri !== prevProps.uri) {
             this.getArticles()
         }
     }
@@ -85,24 +91,26 @@ class ArticleIndex extends Component {
     }
 
     render() {
+        const { articles, filterOptions, page } = this.state
+        const { topic, userLoggedIn } = this.props
         return (
             <Container>
-                {this.state.articles && (<DisplayArticles
-                    userLoggedIn={this.props.userLoggedIn}
-                    articles={this.state.articles}
-                    topic={this.props.topic}
+                {articles && (<DisplayArticles
+                    userLoggedIn={userLoggedIn}
+                    articles={articles}
+                    topic={topic}
                     sortArticlesBy={this.sortArticlesBy}
-                    filterOptions={this.state.filterOptions}
+                    filterOptions={filterOptions}
                 />)}
                 <Pagination
-                    page={this.state.page}
+                    page={page}
                     prevDisabled={this.prevDisabled}
                     nextDisabled={this.nextDisabled}
                     actions={this.actions}
                 />
-                {this.state.articles && this.props.userLoggedIn && <AddArticle
-                    userLoggedIn={this.props.userLoggedIn}
-                    topic={this.state.articles.topic} />}
+                {articles && userLoggedIn && <AddArticle
+                    userLoggedIn={userLoggedIn}
+                    topic={articles.topic} />}
             </Container>)
     }
 

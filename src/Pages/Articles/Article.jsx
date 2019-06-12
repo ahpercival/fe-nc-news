@@ -13,15 +13,17 @@ class Article extends Component {
         window.scrollTo(0, 0);
     }
     render() {
+        const { singleArticle, changeVotes } = this.state
+        const { userLoggedIn, article_id } = this.props
         return (<div>
-            {this.state.singleArticle && (<DisplaySingleArticle
-                article={this.state.singleArticle}
+            {singleArticle && (<DisplaySingleArticle
+                article={singleArticle}
                 handleVote={this.handleVote}
-                changeVotes={this.state.changeVotes}
-                userLoggedIn={this.props.userLoggedIn}
+                changeVotes={changeVotes}
+                userLoggedIn={userLoggedIn}
                 handleDelete={this.handleDelete}
             />)}
-            <CommentsIndex article_id={this.props.article_id} userLoggedIn={this.props.userLoggedIn} />
+            <CommentsIndex article_id={article_id} userLoggedIn={userLoggedIn} />
         </div>)
     }
 

@@ -6,7 +6,7 @@ import { convertDate } from '../../utils'
 
 class DisplayComments extends Component {
     state = {
-        changeVotes: 0
+        // changeVotes: 0
     }
 
     render() {

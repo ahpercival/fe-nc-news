@@ -29,15 +29,15 @@ class CommentsIndex extends Component {
     }
 
     showNewComment = (postedComment) => {
-        this.setState((currentState) => {
-            return { comments: [postedComment, ...currentState.comments] }
+        this.setState((prevState) => {
+            return { comments: [postedComment, ...prevState.comments] }
         })
     }
 
     pressDeleteComment = comment_id => {
         deleteComment(comment_id)
-        this.setState((currentState) => {
-            const remainingComments = [...currentState.comments]
+        this.setState((prevState) => {
+            const remainingComments = [...prevState.comments]
             for (let i = 0; i < remainingComments.length; i++) {
                 if (remainingComments[i].comment_id === comment_id)
                     remainingComments.splice(i, 1)
