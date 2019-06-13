@@ -1,12 +1,13 @@
-import React from 'react';
-import { Container, Image } from 'react-bootstrap';
+import React from "react";
+import {Container, Image} from "react-bootstrap";
+import Footer from "../../assets/img/Footer.jpg";
 
 const FooterDisplay = () => {
-    return (
-        <Container>
-            <Image src="https://www.mosaicsgroup.com/assets/site_18/images/subheader.jpg" fluid />
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Image src={Footer} fluid />
+    </Container>
+  );
+};
 
-export default FooterDisplay
+export default FooterDisplay;

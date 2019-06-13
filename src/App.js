@@ -13,6 +13,13 @@ import './assets/css/styles.scss';
 
 class App extends Component {
   state = { userLoggedIn: null }
+  
+  loginUser = event => {
+    this.setState({userLoggedIn: event.username})}
+
+  logoutUser = () => {
+    this.setState({userLoggedIn: null})}
+
   render() {
     return (
       <div>
@@ -29,26 +36,6 @@ class App extends Component {
         </Router>
         <FooterDisplay />
       </div>
-    )
-  }
-
-  loginUser = event => {
-    this.setState(
-      prevState => {
-        return {
-          userLoggedIn: prevState.userLoggedIn = event.username
-        }
-      }
-    )
-  }
-
-  logoutUser = () => {
-    this.setState(
-      prevState => {
-        return {
-          userLoggedIn: prevState.userLoggedIn = null
-        }
-      }
     )
   }
 
