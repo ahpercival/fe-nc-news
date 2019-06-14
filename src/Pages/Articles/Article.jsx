@@ -8,9 +8,13 @@ class Article extends Component {
   state = {singleArticle: {}, changeVotes: 0};
 
   componentDidMount() {
-    getSingleArticle(this.props.article_id).then(article => {
-      this.setState({singleArticle: article, vote: article.votes});
-    });
+    getSingleArticle(this.props.article_id)
+      .then(article => {
+        this.setState({singleArticle: article, vote: article.votes});
+      })
+      .catch(err => {
+        navigate("/error");
+      });
     window.scrollTo(0, 0);
   }
 

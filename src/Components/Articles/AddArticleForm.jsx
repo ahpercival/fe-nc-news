@@ -1,6 +1,6 @@
 import React from "react";
 import {Container, Form, Button} from "react-bootstrap";
-import {navigate, Link} from "@reach/router";
+import {Link} from "@reach/router";
 import PageTitle from "../Title/PageTitle";
 
 const AddArticleForm = props => {
