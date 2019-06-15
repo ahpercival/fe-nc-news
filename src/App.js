@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div class="bgcolour">
         <Header
           loginUser={this.loginUser}
           logoutUser={this.logoutUser}
@@ -48,7 +48,7 @@ class App extends Component {
           <UsersIndex path="/users" userLoggedIn={this.state.userLoggedIn} />
           <User path="/users/:username" />
           <TopicIndex path="/topic" userLoggedIn={this.state.userLoggedIn} />
-          <ErrorPage path="/error" />
+          <ErrorPage path="/*" />
         </Router>
         <FooterDisplay />
       </div>

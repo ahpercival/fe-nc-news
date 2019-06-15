@@ -40,8 +40,8 @@ class ArticleIndex extends Component {
   };
 
   getArticles = () => {
-    const {author, page, perPage, sort} = this.state;
-    const {topic} = this.props;
+    const {page, perPage, sort} = this.state;
+    const {topic, author} = this.props;
     return getAllArticles({
       topic: topic,
       p: page,

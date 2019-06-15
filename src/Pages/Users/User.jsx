@@ -4,14 +4,19 @@ import DisplaySingleUser from "../../Components/Users/DisplaySingleUser";
 import ArticleIndex from "../Articles/ArticleIndex";
 import {Container, Row, Col} from "react-bootstrap";
 import PageTitle from "../../Components/Title/PageTitle";
+import {navigate} from "@reach/router";
 
 class User extends Component {
   state = {singleUser: {}};
 
   componentDidMount() {
-    getUserbyUsername(this.props.username).then(singleUser => {
-      this.setState({singleUser});
-    });
+    getUserbyUsername(this.props.username)
+      .then(singleUser => {
+        this.setState({singleUser});
+      })
+      .catch(err => {
+        navigate("/error");
+      });
     window.scrollTo(0, 0);
   }
   render() {

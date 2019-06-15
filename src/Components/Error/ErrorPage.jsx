@@ -1,14 +1,26 @@
 import React from "react";
 import {Link} from "@reach/router";
-import {Container} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import PageTitle from "../Title/PageTitle";
 
 const ErrorPage = props => {
   return (
     <Container>
-      <PageTitle>Oh no!</PageTitle>
-      <h3>Unfortunately that page cannot be found</h3>
-      <Link to="/home">Return to Home Page</Link>
+      <Col>
+        <Row>
+          <PageTitle>Oh no!</PageTitle>
+        </Row>
+        <Row>
+          <h3>You are searching for something that cannot be found</h3>
+        </Row>
+        <Row>
+          <h4>
+            Return to the home page <Link to="/home">here</Link>
+          </h4>
+          <br />
+          <br />
+        </Row>
+      </Col>
     </Container>
   );
 };
